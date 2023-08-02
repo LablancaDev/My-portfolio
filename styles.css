@@ -501,7 +501,7 @@ header{
 }
 .contenido-proyectos .galeria h3{
     color:#1895ED;
-    box-shadow: 13px solid black;
+
 }
 
 .contenido-proyectos .galeria p{
@@ -524,6 +524,7 @@ header{
     justify-content: center;
     text-align: center;
     flex-direction: column;
+    
 }
 
 /*EFECTO EXTRA EN LA ANIMACIÓN SALEN LAS IMGS DESDE LA IZQ, complico aún más el evento dando un tiempo determinado de aparición a cada fila*/
@@ -557,8 +558,11 @@ header{
 }
 
 /*FIN DE EFECTO EXTRA*/
-.contenido-proyectos .galeria .texto button{
-    margin-top: 2em;
+.contenido-proyectos .galeria .texto a{
+    display: inline-block;/*MUY IMPORTANTE las etiquetas a son elementos de línea, por lo que su caja sólo ocupa el espacio necesario para mostrar sus contenidos, si quiero darle un posicionamiento y un ancho tengo que darle la propiedad display:inline-block, ya que con sólo display bloq no se posiciona al centro del elemento padre */
+    margin-top: 2em;/*importante es una mala práctica poner un botón dentro de un enlace, esta sería la forma ver html*/
+    width: 8em;
+    
     border-radius: 5px;
     background-color: #FF0000;
     color:#FFFFFF;
@@ -569,7 +573,7 @@ header{
     border: 1px solid #FFFFFF;
     transition: .3s;
 }
-.contenido-proyectos .galeria .texto button:hover{
+.contenido-proyectos .galeria .texto a:hover{
     background-color: transparent;/*Hover botones código*/
     color: #FF0000;
     border: 1px solid #FF0000;
