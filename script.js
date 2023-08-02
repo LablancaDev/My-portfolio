@@ -110,7 +110,7 @@ function efectBottom(){
 
 
 
-//EVENTO SCROLL IMÁGENES PROYECTOS (DESDE EL LATERAL)
+//EVENTO SCROLL IMÁGENES PROYECTOS (EFECTO LATERAL)
 
 let animacion2 = document.querySelectorAll(".fila_");/*seleccionamos el elemento fila para que cada imagen y texto de cada fila tenga un tiempo de transición distinto que le daré desde css en fila 1, fila 2, y fila 3. */ 
 
