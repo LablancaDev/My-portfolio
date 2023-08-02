@@ -915,6 +915,9 @@ footer .up{
     top: -25%;
     transform: translateX(-50%);/*CENTRADO DEL BOTON DE SUBIR A INICIO*/
 }
+footer .up:hover{
+    background-color:rgb(157, 1, 196);
+}
 
 
 
