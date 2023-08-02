@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio David Risueño Lablanca</title>
     <link rel="stylesheet" href="./styles.css">
-    <!--links fuentes (iconos redes)-->
+    <!--links fuentes funciona(iconos redes)-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -247,17 +247,16 @@
         <div class="contenido-contacto">
             <h2>Contacto</h2>
             <div class="fila">
-                <div class="col">
-                    <input type="text" placeholder="Nombre" required>
-                    <input type="text" placeholder="Número" required>
-                    <input type="text" placeholder="correo" required>
-                    <input type="text" placeholder="Tema" required>
-                    <textarea name="" id="" cols="30" rows="10" placeholder="Mensaje" required></textarea>
-                    <button>
+                <form class="col" action="send.php" method="post"><!--Para vincular el form con el script PHP y que el correo se envie directamente sin pasara por outlook("mailto")-->
+                    <input name="name" type="text" placeholder="name" autocomplete="off" required>
+                    <input name="email" type="text" placeholder="email" autocomplete="off" required>
+                    <input name="theme" type="text" placeholder="theme" autocomplete="off" required>
+                    <textarea name="message" cols="30" rows="10" placeholder="message" required></textarea>
+                    <button id="submit" type="submit" value="SUBMIT">
                         Enviar Mensaje
                         <span class="overlay"></span>
                     </button>
-                </div>
+                </form>
                 <div class="col">
                     <img src="./img/contact_bg.png" alt="">
                     <div class="info">
