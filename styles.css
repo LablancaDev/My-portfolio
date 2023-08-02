@@ -849,6 +849,7 @@ header{
    border-radius: 5px; 
    border: 1px solid var(--palette-color);
    color: #FFF;
+   resize: none;
 }
 .contacto h2{
     text-align: center;
