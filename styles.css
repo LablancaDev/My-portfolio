@@ -1,0 +1,934 @@
+/* Variables CSS para los colores generales */
+:root{
+    /*Definimos la variable palette-color como el color primario*/
+   
+    --secundary-color:#F4F3EB;
+    --tertiary-color:#1D2225;
+    
+    /*variable css dark mode*/
+    --dark-mode-color:hsl(0,0%,20%);
+
+    /*variable css transición colores*/
+    --transition: color 0.5s, background-color 0.5s ease-in-out;/*creamos variable que controla el cambio de colores y el cambio a modo noche y dia , para que no sea tan brusco*/
+
+    /*variables css colores*/
+
+    --palette-color:hsl(46, 84%, 56%);
+    
+    --palette-color:hsl(216, 82%, 48%);
+    
+    --palette-color:hsl(150, 84%, 56%);
+
+    --palette-color:hsl(276, 84%, 56%);
+}
+/*en esta parte añadiremos el color que le corresponde a cada cuadro de selección*/
+.color_bot_orange{
+    --primary-color:hsl(46, 84%, 56%);
+}
+.color_bot_blue{
+    --primary-color:hsl(216, 82%, 48%);
+}
+.color_bot_green{
+    --primary-color:hsl(150, 84%, 56%);
+}
+.color_bot_purple{
+    --primary-color:hsl(276, 84%, 56%);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    user-select: none;
+    font-family: monospace;
+    
+    /* outline: 1px solid red; *//*Con esta propiedad visualizaremos todos los elementos como originalmente están estructurados en forma de rectángulo*/
+}
+html{
+    /* Me permite deslizar suvemente cuando hago clic en los liks del menu */
+    scroll-behavior: smooth;
+}
+/* Estilos generales */
+h1, h2{
+   
+}
+h1, h2, h3, a, p{
+  
+}
+
+body{
+    background-image: url(./img/banner_inicio.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+
+/*Fin Estilos generales */
+
+/*ESTILOS SWITCH MODO DÍA/NOCHE*/
+/*MODO NOCHE CSS*/
+
+/*establecemos los estilos del body cuando tenga la clase Dark/oscura*/
+body.dark{/*cuando el body tenga la clase dark, sustituré el valor de las variables para cambiar el color*/
+    --dark-mode-color:hsl(0,0%,98%);
+   
+}
+/*FIN MODO NOCHE CSS*/
+
+.contenedor-switch{
+    cursor: pointer;
+}
+.switch{/*posicionamos elementos hijos del switch alineados verticalmente*/
+    display: flex;
+    align-items: center;
+    gap: .5em;/*separación entre botón y texto*/
+}
+.switch .icon{/*Para que el logo no quede muy grande, no es necesario, depende del tamaño de origen del logo... */
+    max-width: 3em;
+}
+/*FIN ESTILOS SWITCH MODO DÍA/NOCHE*/
+
+/*INICIO ESTILOS HEADER*/
+header{
+    height: 5em;
+    display: flex;  /*flex-box*/
+    align-items: center;    /*centrado vertical*/
+    justify-content: space-between;/*posicionamos los hijos del header que son el logo y el nav-list a derecha e izquierda*/
+    padding: 2em;/*para separar el contenido del borde*/
+    background-color: var(--dark-mode-color);
+    /*HEADER FIJO*/
+    position: sticky;/*le damos al header un posicionamiento fijo arriba del todo y un z-index para que este por encima de cualquier elemento excepto el menu desplegable*/
+    top: 0;
+    z-index: 500;
+}
+
+.nav-list{
+    list-style-type: none;/*eliminar estilos de lista*/
+    display: flex; /*flex-box*/
+    gap: 3em; /*separar los nav list entre sí*/
+}
+.nav-list li a{
+    color:var(--palette-color);
+    font-size: 1.2em;
+    transition: color .3s ease-in-out;
+    font-family: monospace;
+}
+.nav-list li a:hover{
+    color: #1895ED;
+}
+
+.abrir-menu,
+.cerrar-menu{
+    display: none;/*Para no mostar los botones abrir y cerrar después de los 550px*/
+}
+
+/*MEDIA QUERIES VERSIÓN MOVIL*/
+@media(max-width:700px) {
+    .abrir-menu,
+    .cerrar-menu{
+        display: block;/*Para mostar el botón hasta los 550px después no se muestra*/
+        border: 0;
+        font-size: 2em;  
+        background-color: transparent;
+        cursor: pointer;
+        /*estilos a los botones*/
+    }
+    .cerrar-menu{
+        color: #ececec;
+        padding-bottom: 1em;
+    }
+    .abrir-menu{
+        color: #1CB698;
+    }
+  
+    /*diseño de la nav-bar en versión mobile cuando se despliegue*/
+    .nav{
+          /*ocultamos la nav-bar*/
+        /* display: none;a partir de 550px no se muestra el menú nav-bar */
+        opacity: 0;
+        visibility: hidden;
+    /*si comentamos esta etiqueta el menu nav-bar aparece, si no desaparece, esto lo usaremos en una función de javascript*/
+        /*Abajo están las propiedades de la nav-bar ocultas por el  opacity: 0; visibility: hidden; */
+
+        width: 45%;
+        display: flex;/*lo añadimos para incluir al botón cerrar*/
+        flex-direction: column;/*posicionamos el boton cerrar en forma de columna con el resto de items*/
+        align-items: end;
+        gap: 1em;/*para separar el botón cerrar del resto de elementos*/
+        position: absolute;/*lo usamos para poder mover el menu sin problemas*/
+        top: 65px;/*para que el nav se muestre completo con margen top 0*/
+        right: 0; /*para posicionar el nav-bar a la derecha*/
+        /*bottom: 0; Para que el menú llegue hasta abajo*/
+        background-color: #1c1c1c;
+        padding: 5em 2em;/*para separar el menu y que no quede tan pegado al borde*/
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);/*oscurecemos el menu*/
+        transition: all .4s; 
+        z-index: 100;
+        padding-bottom: 10em;
+    }
+
+    /*LO QUE HAREMOS CON JAVASCRIPT ES LO SIGUIENTE:(mirar etiqueta de abajo)
+    
+    Cuano hagamos click en el botón abrir, se le agrege la clase visible al nav para que se vea*/
+
+
+    .nav.visible{
+       opacity: 1;
+       visibility: visible; 
+    }
+
+    .nav-list{
+       flex-direction: column; /*como ya le hemos dado un display flex anteriormente al nav-list, con  flex-direction: column, posicionamos el nav-list en forma de columna */
+       align-items: end;/*para posicionar los textos a la derecha*/
+    }
+}
+@media(min-width:870px) {
+    .nav-list li a{
+        font-size: 1.5em;
+    }
+}
+
+/*Estilos botones  switch cambio de color*/
+.colors{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20px;
+    width: 100px;/*separación entre menú colores*/
+}
+.color_bot{
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    
+    border: 1.5px solid black;
+    background-color: var(--primary-color);
+    cursor: pointer;/*visualizar la mano al pasar por el cuadro*/
+}
+
+/*Fin Estilos botones  switch cambio de color*/
+
+/* FIN ESTILOS HEADER*/
+
+/*SECCION INICIO*/
+
+.inicio{
+    /*IMPORTANTE: Siempre hay que usar el display flex, tanto si empiezo con los elementos en vertical como en horizontal, si quiero los elementos en vertical al poner displax:flex se pondrán en horizontal, aquí es donde le doy un flex-direction:column para solucionarlo, y además me permitirá alinear los elementos al centro*/
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2em;
+  
+}
+
+.contenido-inicio{
+    width: 18em;
+    height: 28em;
+    margin-bottom: 1em;
+    background-color: var(--tertiary-color);
+    border-radius: 10px ;
+    text-align: center;
+    border: 2px solid #a658ff; 
+    border: 2px solid var(--palette-color);
+    transition: var(--transition);
+
+    /*EVENTO JAVASCRIPT*/
+    opacity: 0;
+    transition: all 1s;
+}
+.efectoCarta{
+    animation: efectoCarta 1s;
+}
+@keyframes efectoCarta{
+    0%{
+        transform: translateX(-300px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+.contenedor-img img{
+    width: 13em;
+    height: 13em;
+    border-radius: 100%;
+    border: 3px solid #000000;
+    margin-top: 1em; 
+}
+.texto h1{
+    color: #ECA009;
+    font-size: 1.5em;
+}
+.texto h3{
+    color: #2EBD8B;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    font-size: 1.2em;
+}
+.contenido-tec img{/*damos un tamaño a las imagenes aunque ya las busqué todas con un tamaño de origen de 144px*/
+    height: 100px;
+    width: 100px;
+}
+/*JAVASCRIPT*/
+.contenedor-tec{/*ocultamos los iconos animación JAVASCRIPT*/
+    opacity: 0;
+    transition: all 1s;
+}
+.efectoBottom{
+    animation: mostrarAbajo 1s;
+}
+@keyframes mostrarAbajo{
+    0%{
+        transform: translateY(400px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+/*RECUERDA MOVIL SON LOS QUE NO TIENEN MEDIA QUERIES*/
+@media(min-width:375px) {/*REDUCCIÓN CARTA IMAGEN NOMBRE/APELLIDOS*/
+    .contenido-inicio{
+        height: 36em;
+        width: 22em;
+        margin-bottom: 1em;
+    }
+    .contenedor-img img{
+        height: 20em;
+        width: 20em;  
+    }
+    .texto h1{
+        font-size: 1.8em;
+    }
+    .texto h3{
+        font-size: 1.4em;
+    }
+    
+}
+@media(min-width:575px) {
+    .contenido-tec img{
+        height: 150px;
+        width: 150px;
+    }
+    .contenido-inicio{
+        height: 40em;
+        width: 28em;
+        margin-bottom: 1em;
+    }
+    .contenedor-img img{
+        height: 22em;
+        width: 22em;  
+    }
+    .texto h1{
+        font-size: 2em;
+    }
+    .texto h3{
+        font-size: 1.8em;
+    }
+
+}
+
+.redes a{/*estilos a iconos enlaces a redes*/
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    color:#FFFF;
+    border: 1px solid var(--palette-color);
+    border-radius: 100%;
+    font-size: 22px;
+    margin: .2em;
+    transition: .4s;
+    
+}
+.redes a:hover{
+    background-color: #1CB698;
+}
+@media(min-width:950px) {
+    .inicio{
+        flex-direction: row;
+        justify-content: space-around;
+        
+        /*display: block; */  /*paso todo el contenido a posicionarse en bloque*/
+        /*text-align: center; */  /*centro los iconos de tecnologías*/
+    }
+    .contenido-inicio{
+        /* margin: auto; centramos la carta al centro */
+    }
+    .contenido-tec{
+        margin-top: 2em;/*margen de iconos tec con foto*/
+    }
+    
+    
+}
+
+/* SECCION SOBRE MI */
+
+.sobremi{
+    margin-top: 4em;
+    background-color:var(--dark-mode-color);
+    color: #2EBD8B;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 8em;
+
+    /*ANIMACION JAVASCRIPT*/
+    opacity: 0;
+    transition: all 1s;
+}
+.mostrarAbajo{/*Animación mostrar datos Sobre mi desde abajo*/
+    animation: mostrarAbajo .7s;
+}
+/*Efecto transform*/
+@keyframes mostrarAbajo{
+    0%{
+        transform: translateY(400px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+
+.sobremi h2{
+    text-align: center;
+    color:#ECA009;
+}
+.contenido-sobremi{
+    padding-top: 3em;
+}
+.contenido-sobremi h2{
+    font-size: 2.5em;
+    padding: 1em;
+}
+.contenido-sobremi p span{
+    font-weight: bold;
+    font-size: 1em;
+    color: #16e49c;
+}
+.contenido-sobremi p{
+    font-size: 1.8em;
+}
+.sobremi h3{
+    color:#ECA009;
+    margin-top: 1em;
+    margin-bottom: .5em;
+    font-size: 2em;
+
+}
+.Datos li{
+    margin: 12px 0;
+    list-style: none;
+    font-size: 1.5em;
+}
+
+.Datos ul li strong{/*MUY MPORTANTE quiero separar los Datos personales al hacerlo con un margin, no quedan alineados */
+    color: #8109EC;
+    font-size: 1.1em;
+    /*Para poder hacerlo tenemos de darle un width pero no funciona, antes hay que darle un display:inline-block para desbloquear el width ya queda el texto separado y alineado ok*/
+    display: inline-block;/*los elementos con el valor inline-block admiten dimensiones pero todavía son elementos de línea, es decir estarán colocados uno al lado de otro.*/
+    width: 130px;
+    /* margin: 2em; */
+    /*No se le puede dar un width sin en el display: inline-block por que Los elementos en línea no admiten dimensiones (width, height) pero si admiten margin, padding y border, solo ocupan lo que tengan en su contenido, es decir, aunque quieras declarar un ancho y alto a un elemento de línea no podrá tener efecto ya que estos elementos no aceptan dimensiones */
+    
+}
+.Datos ul li{
+   margin: 18px 0;
+}
+.Datos{
+    display: flex;
+    flex-direction: column;/*Posicionamos los elementos hijos del selector Datos, uno abajo del otro*/
+    align-items: center;/*como los hijos intentan ponerse a la misma altura a pesar de tener tamaños diferentes, con esta propiedad centramos e igualamos tamaños a la vez*/
+}
+.Datos ul li span{
+    background-color: #1895ED;
+    padding: 3px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    color: #06ffa8;
+}
+
+@media(min-width:375px) {
+.Datos{
+    justify-content: space-evenly;/*posicionamos los hijos alineados al centro*/
+    flex-direction: row;/*Pasamos a posicionar el botón en paralelo con el texto,    flex-direction: row es la posición original de display-flex  */
+}
+}
+
+/*estilos al botón del curriculum*/
+.Datos button{
+    cursor: pointer;
+    background-color: transparent;
+    color: #000000;
+    border: 2px solid #000000; 
+    padding: 10px 22px;
+    font-size: 16px;
+    margin: 2em;
+    
+    position: relative;/*Como siempre position relative al elemento padre*/
+    z-index: 5;/*Para que el botón y el texto siempre esté por encima de la barra cuando ésta cargue*/
+}
+.Datos button .bar{
+    font-weight: bold;
+    font-size: 1.2em;
+
+    position: absolute;/*position absolute al elemento hijo para desbloquear las medidas top, left... y que la posición de la barra de carga este dentro del padre(o sea dentro del botón)*/
+    top: 0;
+    left: 0;/*Posicionamiento de la barra*/
+    width: 0;
+    height: 100%;
+    background-color: #a658ff;
+    z-index: -1;/*Para que cuando cargue la barra, esta no tape al botón*/
+    transition: 2s;
+}
+.sobremi button:hover .bar{
+    width: 100%;/*hover de barra que carga boton curriculum*/
+}
+/*Fin de estilos al botón del curriculum*/
+
+/* SECCIÓN PROYECTOS */
+
+.proyectos{
+    padding: 0 2em;/*damos a todo el contenido proyectos un padding top y bottom de 0, y left rigth de 2em */
+}
+.contenido-proyectos h2{
+    text-align: center;
+    margin: 1em 0;
+    color: #ECA009;
+    font-size: 2.5em;
+    font-family: monospace;
+}
+.contenido-proyectos .galeria h3{
+    color:#1895ED;
+    box-shadow: 13px solid black;
+}
+
+.contenido-proyectos .galeria p{
+    color: #2EBD8B;
+
+}
+.contenido-proyectos .galeria img{
+   width: 20em;
+   height: 14em;
+   margin: 0 3em;
+   border-radius: 10px;
+   border: 2px solid #a658ff; 
+   border-right: 2px solid var(--palette-color);
+   border-bottom: 2px solid var(--palette-color);
+   transition: var(--transition);
+}
+.contenido-proyectos .galeria{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+/*EFECTO EXTRA EN LA ANIMACIÓN SALEN LAS IMGS DESDE LA IZQ, complico aún más el evento dando un tiempo determinado de aparición a cada fila*/
+.mostrarIzquierda{
+    /* animación incorporada al scroll */
+    animation: mostrarIzquierda .7s;
+}
+@keyframes mostrarIzquierda{
+    0%{
+        transform: translateX(-300px);/*con translateX usa el eje X y sale el elemento de un lateral, si es - desde la izq, si es + desde la drcha*/
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+.contenido-proyectos .galeria .fila_{
+    margin: 2em 0;
+    /*EVENTO JAVASCRIPT para imágenes proyectos, ocultamos todo*/    
+    opacity: 0;
+    transition: all 0.5s;
+}
+/* le daremos un tiempo diferente a cada fila */
+.fila1{
+    animation: mostrarIzquierda .9s; 
+}
+.fila2{
+    animation: mostrarIzquierda .7s; 
+}
+.fila3{
+    animation: mostrarIzquierda .5s; 
+}
+
+/*FIN DE EFECTO EXTRA*/
+.contenido-proyectos .galeria .texto button{
+    margin-top: 2em;
+    border-radius: 5px;
+    background-color: #FF0000;
+    color:#FFFFFF;
+    border-style: none;
+    font-size: 1.2em;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: 1px solid #FFFFFF;
+    transition: .3s;
+}
+.contenido-proyectos .galeria .texto button:hover{
+    background-color: transparent;/*Hover botones código*/
+    color: #FF0000;
+    border: 1px solid #FF0000;
+}
+@media(min-width:575px) { 
+.contenido-proyectos .galeria .fila_{
+    display: flex;
+}
+.contenido-proyectos .galeria img{
+    width: 22em;
+    height: 16em;
+}
+.contenido-proyectos h2{
+    font-size: 3em;
+}
+.contenido-proyectos h3{
+    font-size: 1.7em;
+}
+.contenido-proyectos .galeria p{
+    font-size: 1.2em;
+}
+}
+@media(min-width:800px) {
+    .contenido-proyectos .galeria img{
+        width: 26em;
+        height: 18em;
+    }
+    .contenido-proyectos h2{
+        font-size: 3.5em;
+    }
+    .contenido-proyectos h3{
+        font-size: 2em;
+    }
+    .contenido-proyectos .galeria p{
+        font-size: 1.5em;
+    }
+}
+@media(min-width:1100px) {
+    .contenido-proyectos .galeria img{
+        width: 40em;
+        height: 22em;
+    }
+    .contenido-proyectos h2{
+        font-size: 4em;
+    }
+    .contenido-proyectos h3{
+        font-size: 3em;
+    }
+    .contenido-proyectos .galeria p{
+        font-size: 2em;
+    }
+}
+
+/* SECCIÓN CURRICULUM */
+
+.curriculum{/*colores fondo */
+    /* background-color: #1e2326; */
+    background-color: var(--dark-mode-color);
+    padding: 50px 20px;/*ajuste del texto dentro del contenedor*/
+}
+.curriculum .contenido-seccion{/*centrado del texto */
+    max-width: 1100px;
+    margin: auto;
+}
+.contenido-seccion h2{/*ajuste del titulo*/
+    font-size: 2.5em;
+    text-align: center;
+    padding: 20px 0;
+    color: #ECA009;
+}
+.contenido-seccion .fila{/*poner texto columnas en vertical, uno al lado de otro*/
+    /* display: flex;
+    justify-content: space-between; */
+    display: block;
+}
+.contenido-seccion .fila .col{
+    width: 49%;
+    padding: 0 20px;
+}
+.contenido-seccion .fila .col h3{/*ajuste de titulos*/
+    text-align: center;
+    font-size: 1.5em;
+    margin: 1em 0;
+    color:#2EBD8B;
+}
+.contenido-seccion .fila .izquierda{/*creación y ajuste barras de separación*/
+    border: 2px solid var(--palette-color);
+    border-radius: 5px;
+
+/*INICIO EVENTO JAVASCRIPT*/    
+    /*EVENTO JAVASCRIPT*/
+    opacity: 0;/*ocultamos la columna izquierda*/
+    transition: all .7s;
+}
+.contenido-seccion .fila .derecha{
+    border: 2px solid var(--palette-color);
+    border-radius: 5px;
+
+     /*EVENTO JAVASCRIPT*/
+     opacity: 0;/*ocultamos la columna izquierda*/
+     transition: all .7s;
+}
+.efectoLeft{
+    animation: mostrarIzq .5s;
+}
+@keyframes mostrarIzq{
+    0%{
+        transform: translateX(-300px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+.efectoDrch{
+    animation: mostrarDrch .5s;
+}
+@keyframes mostrarDrch{
+    0%{
+        transform: translateX(300px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+/*FIN EVENTO JAVASCRIPT*/  
+.contenido-seccion .fila .item{/*separación de textos y ajustes*/
+    padding: 25px;
+    margin-bottom: 30px;
+    background-color: #252A2E;
+    position: relative;
+    border-radius: 10px;
+    border: 2px solid #a658ff;
+}
+.contenido-seccion .fila .item h4{/*tamaños de titulos y ajuste*/
+    color: #1D5BDF;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+.contenido-seccion .fila .item .centro{
+    color: #a658ff;
+    font-weight: bold;
+    /*NO PODEMOS DARLE UN MARGIN AL .centro POR QUE ES UN SPAN Y UN SPAN ES UN ELEMENTO DE LÍNEA POR LO TANTO LE DARÉ UN DISPLAY BLOQ PARA CONVERTIRLO EN UN ELEMENTO DE BLOQUE Y PODER DARLE EL MARGIN BOTTOM*/
+    display: block;
+    margin-bottom: 5px;
+}
+.contenido-seccion .fila .item .empresa{
+    color: #a658ff;
+    font-weight: bold;
+    /*NO PODEMOS DARLE UN MARGIN AL .centro POR QUE ES UN SPAN Y UN SPAN ES UN ELEMENTO DE LÍNEA POR LO TANTO LE DARÉ UN DISPLAY BLOQ PARA CONVERTIRLO EN UN ELEMENTO DE BLOQUE Y PODER DARLE EL MARGIN BOTTOM*/
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contenido-seccion .fila .item .fecha{/*ajsute colores*/
+    color: #1CB698;
+    /*AQUÍ LO MISMO CON EL .DATE POR QUE ES UN SPAN*/
+    display: block;
+    margin-bottom: 10px;
+}
+.contenido-seccion .fila .item p{/*altura linea/texto?*/
+    line-height: 24px;
+    color: #fff;
+}
+.contenido-seccion .fila .izq{/*color y ajuste borde caja izq*/
+    border-right: 2px solid #1CB698;
+    margin-right: 20px;
+}
+.contenido-seccion .fila .der{
+    border-left: 2px solid #1CB698;/*color y ajuste borde caja der*/
+    margin-left: 20px;
+}
+.contenido-seccion .fila .item .conector-izq{/* creación de line que conecta con raiz izq*/
+    height: 2px;
+    background-color: #1CB698;
+    width: 47px;
+    position: absolute;
+    top: 50%;
+    right: -47px;
+    z-index: 5;
+}
+.contenido-seccion .fila .item .conector-izq .circulo-izq{/*creación de punto de conexión con raiz izq*/
+    display: block;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: #1CB698;
+    float: right;
+    position: relative;
+    bottom: 4px;
+}
+.contenido-seccion .fila .item .conector-drch{/* creación de line que conecta con raiz der*/
+    height: 2px;
+    height: 2px;
+    background-color: #1CB698;
+    width: 47px;
+    position: absolute;
+    top: 50%;
+    left: -47px;
+    z-index: 5;
+}
+.contenido-seccion .fila .item .conector-drch .circulo-drch{/* creación de line que conecta con raiz der*/
+    height: 2px;
+    display: block;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: #1CB698;
+    float: left;
+    position: relative;
+    bottom: 4px;
+}
+.curriculum .fila .col{
+    width: 95%;
+}
+.curriculum .fila .derecha{
+    margin-left: 25px;
+}
+.contenido-seccion .fila .derecha{
+    margin-top: 1em;
+}
+@media(min-width:800px) {
+    .contenido-seccion .fila{
+        /* display: block; */
+        display: flex;
+        justify-content: space-between;
+    }
+    .contenido-seccion .fila .izquierda{
+        margin-top: 1em;
+    }
+}
+/* SECCION FORMULARIO/CONTACTO */
+
+.contacto{
+    background-color: var(--dark-mode-color);
+    margin-top: 20em;
+    padding-bottom: 5em;
+}
+.contacto .contenido-contacto{/*centrado del contenido*/
+    max-width: 1100px;
+    margin: auto;
+}
+.contacto .col img{
+   width: 100%;
+}
+.contacto .fila{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+@media(min-width:800px) {
+    .contacto .fila{
+       flex-direction: row;
+    }
+}
+.contacto .col{/*ajuste columna*/
+    width: 100%;/*ancho principal del contenido*/
+    padding: 2em;
+    position: relative;/*PADRE*/
+}
+.contacto .col .info{
+    position: absolute;/*HIJO*/
+    top: 25%;
+    left: 30%;
+}
+.contacto .col input, .contacto .col textarea{
+   width: 100%;/*ancho sobre el contenido principal que es 100% */
+   padding: 1em;
+   margin-bottom: .8em;
+   font-size: 1.5em;
+   background-color: var(--tertiary-color);
+   border: none;
+   border-radius: 5px; 
+   border: 1px solid var(--palette-color);
+}
+.contacto h2{
+    text-align: center;
+    color: #ECA009;
+    font-size: 2.5em;
+    padding: 1.5em 0;
+}
+.contacto button{
+
+    border-radius: 5px;
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border-style: none;
+    cursor: pointer;
+    border: 1px solid #FFFFFF;
+    transition: .3s;
+    
+    /*Cambiamos el elemento a tipo bloque para centrarlo con margin auto*/
+    display: block;
+    margin: auto; /*centrado del botón*/
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 2em;/*gracias al display block podemos moverlo, si lo ponemos antes del display block no funciona, no hace nada...*/
+}
+.contacto button:hover{
+    background-color: transparent;
+    color: #FF0000;
+    border: 1px solid #FF0000;
+}
+.contacto .info {
+  color: #1895ED;
+    
+}
+.contacto .info ul li{
+    list-style: none;
+    padding: .5em;
+}
+/* FOOTER */
+
+footer{
+    background-color:var(--tertiary-color);
+    padding: 3em;
+    text-align: center;
+
+    width: 100%;
+    position: relative;/*PADRE, RELATIVE*/
+}
+footer .texto{
+   color:#2EBD8B;
+   font-size: 1.5em;
+}
+footer .texto a{
+    color:#ECA009;
+}
+footer .up{
+    background-color:#8109EC;
+    color: #FFF;
+    border-radius: 50px;
+    line-height: 50px;/*centrado de las flechas dentro del circulo*/
+
+    display: block;/*como a (up es un elemento de línea lo pasamos a bloque para poder darle tamaño)*/
+    width: 50px;
+    height: 50px;
+
+    position: absolute;/*HIJO ABSOLUTE*/
+    left: 50%;
+    top: -25%;
+    transform: translateX(-50%);/*CENTRADO DEL BOTON DE SUBIR A INICIO*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
