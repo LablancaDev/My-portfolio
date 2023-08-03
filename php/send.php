@@ -1,9 +1,9 @@
 <?php
     $destino = "lablancadev@hotmail.com";
-    $name = $_POST["name"];
+    $name = $_POST["Nombre"];
     $email = $_POST["email"];
-    $theme = $_POST["theme"];
-    $message = $_POST["message"];
+    $theme = $_POST["Tema"];
+    $message = $_POST["Mensaje"];
     $contenido = "Nombre: " . $name . "\nEmail: " . $email . "\nTema: " . $theme "\nMensaje: " . $message;
     mail($destino, "Contacto a través de la web", $contenido);
     

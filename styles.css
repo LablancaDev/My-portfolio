@@ -46,7 +46,7 @@
     /* outline: 1px solid red; *//*Con esta propiedad visualizaremos todos los elementos como originalmente están estructurados en forma de rectángulo*/
 }
 html{
-    /* Me permite deslizar suvemente cuando hago clic en los liks del menu */
+    /* Me permite deslizar suavemente cuando hago clic en los liks del menu */
     scroll-behavior: smooth;
 }
 /* Estilos generales */
@@ -72,7 +72,7 @@ body{
 
 /*establecemos los estilos del body cuando tenga la clase Dark/oscura*/
 body.dark{/*cuando el body tenga la clase dark, sustituré el valor de las variables para cambiar el color*/
-    --dark-mode-color:hsl(0,0%,98%);
+    --dark-mode-color:hsl(0,0%,90%);
    
 }
 /*FIN MODO NOCHE CSS*/
