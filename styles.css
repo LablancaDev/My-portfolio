@@ -420,7 +420,6 @@ header{
 .Datos li{
     margin: 12px 0;
     list-style: none;
-    
 }
 @media(min-width:450px) {
     .Datos li{
