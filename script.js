@@ -20,7 +20,7 @@ cerrar.addEventListener("click", () =>{
 })
 
 
-//ACTIVACIÓN MODO NOCHE/DÍA
+//ACTIVACIÓN MODO NOCHE/DÍA.
 
 //seleccionamos los elementos
 

@@ -420,9 +420,15 @@ header{
 .Datos li{
     margin: 12px 0;
     list-style: none;
-    font-size: 1.5em;
+    
 }
-
+@media(min-width:450px) {
+    .Datos li{
+        margin: 12px 0;
+        list-style: none;
+        font-size: 1.6em;
+    } 
+}
 .Datos ul li strong{/*MUY MPORTANTE quiero separar los Datos personales al hacerlo con un margin, no quedan alineados */
     color: #8109EC;
     font-size: 1.1em;
@@ -458,16 +464,21 @@ header{
 
 /*estilos al botón del curriculum*/
 .Datos button{
+    font-weight: bold;
     cursor: pointer;
     background-color: transparent;
-    color: #000000;
     border: 2px solid #000000; 
     padding: 10px 22px;
     font-size: 16px;
     margin: 2em;
-    
     position: relative;/*Como siempre position relative al elemento padre*/
     z-index: 5;/*Para que el botón y el texto siempre esté por encima de la barra cuando ésta cargue*/
+}
+.Datos button a{
+    color: #000000;
+}
+.Datos button a:hover{
+    color: #ffffff;
 }
 .Datos button .bar{
     font-weight: bold;
