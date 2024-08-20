@@ -453,6 +453,9 @@ header{
     font-size: 1.2em;
     color: #06ffa8;
 }
+.Datos ul li a{
+    color: #ff4d06;
+}
 
 @media(min-width:375px) {
 .Datos{
