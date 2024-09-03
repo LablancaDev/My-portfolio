@@ -472,10 +472,11 @@ header{
     border: 2px solid #000000; 
     padding: 10px 22px;
     font-size: 16px;
-    margin: 2em;
+    margin: 1em;
     position: relative;/*Como siempre position relative al elemento padre*/
     z-index: 5;/*Para que el botón y el texto siempre esté por encima de la barra cuando ésta cargue*/
 }
+
 .Datos button a{
     color: #000000;
 }
